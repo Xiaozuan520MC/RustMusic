@@ -1,0 +1,643 @@
+@define-color accent_color #ff9a2e;
+@define-color accent_bg_color #f07800;
+@define-color accent_fg_color #ffffff;
+@define-color theme_selected_bg_color #f07800;
+@define-color theme_selected_fg_color #ffffff;
+
+.app-title {
+    font-weight: 800;
+    letter-spacing: 0.3px;
+}
+
+/* 窗口本身：圆角，配合 Wayland 阴影 */
+window {
+    border-radius: 18px;
+}
+
+window.maximized-window {
+    border-radius: 0;
+}
+
+window.maximized-window headerbar {
+    border-radius: 0;
+}
+
+headerbar {
+    min-height: 52px;
+    border-radius: 18px 18px 0 0;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+/* 顶栏控件使用胶囊形 */
+.search-entry {
+    border-radius: 999px;
+    min-height: 34px;
+    padding: 0 14px;
+}
+
+.import-button {
+    border-radius: 999px;
+    min-height: 34px;
+    padding: 0 16px;
+}
+
+/* 曲目行 */
+.track-row {
+    margin: 2px 10px;
+    padding: 8px 18px;
+    border-radius: 14px;
+}
+
+.track-row:hover {
+    background-color: alpha(currentColor, 0.055);
+}
+
+/* 选中行不要整条高亮，只保留标题颜色 */
+listview > row:selected,
+listview > row:selected:hover {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.track-title {
+    font-weight: 600;
+}
+
+.track-subtitle {
+    font-size: 0.84em;
+    opacity: 0.6;
+}
+
+.track-duration {
+    font-size: 0.84em;
+    opacity: 0.6;
+    font-feature-settings: "tnum";
+}
+
+.track-row.playing .track-title,
+listview > row:selected .track-row.playing .track-title {
+    color: @accent_color;
+}
+
+/* 播放栏：底部圆角栏 */
+.player-bar {
+    padding: 12px 28px;
+    background-color: alpha(currentColor, 0.055);
+    border-radius: 22px;
+    box-shadow: none;
+}
+
+/* 细而柔和的滚动条 */
+scrollbar {
+    background: transparent;
+    border: none;
+}
+
+scrollbar trough {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+scrollbar slider {
+    min-width: 5px;
+    min-height: 32px;
+    border-radius: 999px;
+    border: none;
+    box-shadow: none;
+    background-color: alpha(currentColor, 0.20);
+}
+
+scrollbar slider:hover {
+    background-color: alpha(currentColor, 0.36);
+}
+
+scrollbar slider:active {
+    background-color: alpha(currentColor, 0.5);
+}
+
+.now-title {
+    font-weight: 700;
+    font-size: 1.02em;
+}
+
+.now-artist {
+    font-size: 0.84em;
+    opacity: 0.6;
+}
+
+.time-label {
+    font-size: 0.78em;
+    opacity: 0.6;
+    font-feature-settings: "tnum";
+}
+
+.play-button {
+    min-width: 46px;
+    min-height: 46px;
+    border-radius: 23px;
+    padding: 0;
+}
+
+.control-button {
+    min-width: 36px;
+    min-height: 36px;
+    border-radius: 18px;
+    padding: 0;
+}
+
+.mode-active {
+    color: @accent_color;
+}
+
+.volume-button {
+    min-width: 28px;
+    min-height: 28px;
+    border-radius: 14px;
+    padding: 0;
+}
+
+.speed-button {
+    min-width: 44px;
+    min-height: 30px;
+    border-radius: 999px;
+    padding: 0 10px;
+    background-color: alpha(currentColor, 0.06);
+}
+
+.speed-button:hover {
+    background-color: alpha(currentColor, 0.10);
+}
+
+.speed-label {
+    font-size: 0.8em;
+    font-weight: 600;
+    font-feature-settings: "tnum";
+    opacity: 0.8;
+}
+
+.lyric-line {
+    font-size: 0.9em;
+    font-weight: 500;
+    opacity: 0.72;
+    padding: 1px 0 3px;
+}
+
+.seek-scale trough,
+.volume-scale trough {
+    min-height: 6px;
+    border-radius: 999px;
+}
+
+scale trough highlight {
+    background-color: @accent_bg_color;
+    border-radius: 999px;
+}
+
+.suggested-action {
+    background-image: linear-gradient(135deg, #ffa63d, #ef6c00);
+    color: #ffffff;
+}
+
+.suggested-action:hover {
+    background-image: linear-gradient(135deg, #ffb257, #ff7a00);
+}
+
+.suggested-action:active {
+    background-image: linear-gradient(135deg, #f09000, #d95f00);
+}
+
+/* 空状态 */
+.empty-title {
+    font-size: 1.35em;
+    font-weight: 700;
+}
+
+.empty-sub {
+    opacity: 0.6;
+}
+
+.empty-action {
+    border-radius: 999px;
+    padding: 6px 22px;
+}
+
+.dim-icon {
+    opacity: 0.7;
+}
+
+/* ===== 液态玻璃 ===== */
+window,
+window.background {
+    border-radius: 18px;
+    background-color: #101013;
+    background-image: linear-gradient(155deg, #211a17 0%, #131318 45%, #0b0b0e 100%);
+    background-image:
+        radial-gradient(circle at 8% -8%, rgba(255, 145, 40, 0.30) 0%, rgba(255, 145, 40, 0.07) 32%, transparent 55%),
+        radial-gradient(circle at 96% 102%, rgba(80, 130, 255, 0.16) 0%, transparent 42%),
+        radial-gradient(circle at 55% 118%, rgba(255, 70, 120, 0.10) 0%, transparent 40%),
+        linear-gradient(155deg, #211a17 0%, #131318 45%, #0b0b0e 100%);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+headerbar {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.app-title {
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
+}
+
+listview,
+listview > row,
+scrolledwindow,
+scrolledwindow > viewport {
+    background-color: transparent;
+}
+
+/* 玻璃面板通用：上半部高光 + 细边框 + 内侧反光 */
+.player-bar {
+    padding: 12px 28px;
+    border-radius: 22px;
+    background-color: rgba(255, 255, 255, 0.035);
+    background-image:
+        linear-gradient(115deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.02) 30%, transparent 60%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.01) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.16),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.28),
+        0 14px 34px rgba(0, 0, 0, 0.35);
+}
+
+.search-entry {
+    background-color: rgba(255, 255, 255, 0.045);
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.015));
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10);
+}
+
+.search-entry:focus,
+.search-entry:focus-within {
+    border-color: rgba(255, 154, 46, 0.55);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.12),
+        0 0 0 2px rgba(240, 120, 0, 0.15);
+}
+
+.import-button,
+.empty-action,
+.play-button {
+    color: #ffffff;
+    background-color: #f07800;
+    background-image:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.30), rgba(255, 255, 255, 0.0) 48%),
+        linear-gradient(180deg, #ffae45 0%, #f07800 100%);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.35),
+        0 8px 22px rgba(240, 120, 0, 0.25);
+}
+
+.import-button:hover,
+.empty-action:hover,
+.play-button:hover {
+    background-image:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.36), rgba(255, 255, 255, 0.0) 50%),
+        linear-gradient(180deg, #ffbc63 0%, #ff7a00 100%);
+}
+
+.import-button:active,
+.empty-action:active,
+.play-button:active {
+    background-image:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.0) 50%),
+        linear-gradient(180deg, #f09000 0%, #d95f00 100%);
+}
+
+.control-button:hover,
+.volume-button:hover {
+    background-color: rgba(255, 255, 255, 0.06);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.speed-button {
+    background-color: rgba(255, 255, 255, 0.05);
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01));
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10);
+}
+
+.speed-button:hover {
+    background-color: rgba(255, 255, 255, 0.09);
+}
+
+.track-row:hover {
+    background-color: rgba(255, 255, 255, 0.045);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.lyric-line {
+    opacity: 0.78;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.55);
+}
+
+.seek-scale trough,
+.volume-scale trough {
+    background-color: rgba(255, 255, 255, 0.10);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+scale trough highlight {
+    background-color: @accent_bg_color;
+    background-image: linear-gradient(90deg, #ffb257, #f07800);
+    box-shadow: 0 0 10px rgba(240, 120, 0, 0.30);
+}
+
+scale slider {
+    background-color: #ffffff;
+    border: none;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.45);
+}
+
+scrollbar slider {
+    background-color: rgba(255, 255, 255, 0.18);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10);
+}
+
+scrollbar slider:hover {
+    background-color: rgba(255, 255, 255, 0.32);
+}
+
+/* ===== 过渡与入场动画 ===== */
+.track-row {
+    transition: background-color 160ms ease, box-shadow 160ms ease;
+}
+
+.track-title {
+    transition: color 180ms ease;
+}
+
+.control-button,
+.volume-button,
+.play-button,
+.import-button,
+.empty-action,
+.speed-button,
+.search-entry {
+    transition: background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.mode-active {
+    transition: color 160ms ease;
+}
+
+scrollbar slider {
+    transition: background-color 160ms ease;
+}
+
+@keyframes rm-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.player-bar {
+    animation: rm-fade-in 260ms ease-out;
+}
+
+listview {
+    animation: rm-fade-in 220ms ease-out;
+}
+
+/* ===== 滚动歌词 ===== */
+.lyrics-panel {
+    padding: 8px;
+    border-radius: 22px;
+    background-color: rgba(255, 255, 255, 0.03);
+    background-image:
+        linear-gradient(115deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 30%, transparent 60%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.14),
+        0 12px 30px rgba(0, 0, 0, 0.30);
+}
+
+.lyrics-scroll,
+.lyrics-scroll viewport,
+.lyrics-list {
+    background: transparent;
+}
+
+.lyrics-list {
+    padding: 0 26px;
+}
+
+.lyrics-line {
+    padding: 7px 4px;
+    font-size: 0.96em;
+    opacity: 0.42;
+    transition: color 180ms ease, opacity 180ms ease;
+}
+
+.lyrics-line.lyric-active {
+    color: @accent_color;
+    opacity: 1;
+    font-weight: 700;
+}
+
+.lyric-placeholder {
+    padding: 40px 0;
+    opacity: 0.5;
+}
+
+.lyrics-button {
+    min-width: 32px;
+    min-height: 30px;
+    border-radius: 999px;
+    padding: 0 9px;
+    background-color: rgba(255, 255, 255, 0.05);
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01));
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10);
+    transition: background-color 160ms ease, border-color 160ms ease;
+}
+
+.lyrics-button:hover {
+    background-color: rgba(255, 255, 255, 0.09);
+}
+
+.lyrics-button-label {
+    font-size: 0.8em;
+    font-weight: 700;
+}
+
+.lyrics-button.mode-active {
+    color: @accent_color;
+    background-color: alpha(@accent_bg_color, 0.14);
+    border-color: alpha(@accent_bg_color, 0.28);
+}
+
+/* ===== 收藏夹与行操作 ===== */
+.favorites-toggle {
+    min-height: 34px;
+    border-radius: 999px;
+    padding: 0 14px;
+    background-color: rgba(255, 255, 255, 0.05);
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01));
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10);
+    transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+.favorites-toggle:checked {
+    color: @accent_color;
+    background-color: alpha(@accent_bg_color, 0.14);
+    border-color: alpha(@accent_bg_color, 0.28);
+}
+
+.row-action {
+    min-width: 28px;
+    min-height: 28px;
+    border-radius: 14px;
+    padding: 0;
+    opacity: 0.5;
+    transition: background-color 150ms ease, opacity 150ms ease, color 150ms ease;
+}
+
+.row-action:hover {
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.07);
+}
+
+.favorite-active {
+    color: @accent_color;
+    opacity: 1;
+}
+
+.delete-button:hover {
+    color: #ff7373;
+}
+
+/* ===== 启动帮助 ===== */
+.help-button {
+    min-width: 34px;
+    min-height: 34px;
+    border-radius: 17px;
+    padding: 0;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10);
+    transition: background-color 160ms ease, border-color 160ms ease;
+}
+
+.help-button:hover {
+    background-color: rgba(255, 255, 255, 0.09);
+}
+
+.help-content {
+    padding: 24px 28px;
+}
+
+.help-title {
+    font-size: 1.4em;
+    font-weight: 800;
+}
+
+.help-body {
+    font-size: 0.95em;
+    opacity: 0.82;
+}
+
+.help-check {
+    margin-top: 2px;
+}
+
+.help-action {
+    border-radius: 999px;
+    min-height: 36px;
+    padding: 0 24px;
+}
+
+/* ===== 设置 ===== */
+.settings-content {
+    padding: 18px 22px 22px;
+}
+
+.settings-section {
+    font-size: 0.82em;
+    font-weight: 700;
+    opacity: 0.55;
+    margin-top: 2px;
+}
+
+.settings-row {
+    padding: 10px 2px;
+}
+
+.settings-label {
+    font-weight: 600;
+}
+
+.settings-about {
+    margin-top: 10px;
+    font-size: 0.85em;
+    opacity: 0.55;
+}
+
+/* ===== 弹窗 ===== */
+.dialog-window,
+.dialog-window.background {
+    background-image: none;
+    background-color: #16161a;
+}
+
+.settings-row dropdown {
+    min-height: 32px;
+    border-radius: 10px;
+}
+
+/* ===== 删除确认 ===== */
+.delete-content {
+    padding: 22px 24px 20px;
+}
+
+.dialog-title {
+    font-size: 1.25em;
+    font-weight: 800;
+}
+
+.delete-track-title {
+    margin-top: 2px;
+    font-size: 1.02em;
+    font-weight: 700;
+}
+
+.delete-track-sub {
+    font-size: 0.88em;
+    opacity: 0.55;
+}
+
+.delete-body {
+    margin-top: 6px;
+    font-size: 0.92em;
+    opacity: 0.72;
+}
+
+.delete-error {
+    color: #ff6b6b;
+    font-size: 0.9em;
+}
+
+.delete-dialog button {
+    border-radius: 999px;
+    min-height: 34px;
+    padding: 0 18px;
+}
+
+.delete-confirm {
+    font-weight: 700;
+}

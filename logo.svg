@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" fill="none">
+  <title>RustMusic Logo</title>
+  <desc>橙色渐变字母 R，置于深色圆角唱片底板上。</desc>
+  <defs>
+    <linearGradient id="bg" x1="64" y1="24" x2="448" y2="488" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2C2C32"/>
+      <stop offset="1" stop-color="#121214"/>
+    </linearGradient>
+
+    <linearGradient id="orange" x1="160" y1="100" x2="410" y2="430" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFC06A"/>
+      <stop offset="0.42" stop-color="#FF8A1F"/>
+      <stop offset="1" stop-color="#F05700"/>
+    </linearGradient>
+
+    <radialGradient id="glow" cx="0" cy="0" r="1"
+      gradientUnits="userSpaceOnUse"
+      gradientTransform="translate(256 262) rotate(90) scale(236)">
+      <stop stop-color="#FF7A00" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#FF7A00" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="shadow" x="-45%" y="-45%" width="190%" height="190%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#000000" flood-opacity="0.48"/>
+    </filter>
+
+    <clipPath id="card">
+      <rect x="8" y="8" width="496" height="496" rx="112"/>
+    </clipPath>
+  </defs>
+
+  <!-- 圆角底板 -->
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#bg)"/>
+  <rect x="8.5" y="8.5" width="495" height="495" rx="111.5" stroke="#FFFFFF" stroke-opacity="0.08"/>
+
+  <!-- 唱片纹路与橙色光晕 -->
+  <g clip-path="url(#card)">
+    <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#glow)"/>
+    <circle cx="256" cy="264" r="198" stroke="#FFFFFF" stroke-opacity="0.05" stroke-width="2"/>
+    <circle cx="256" cy="264" r="170" stroke="#FFFFFF" stroke-opacity="0.04" stroke-width="2"/>
+    <circle cx="256" cy="264" r="142" stroke="#FFFFFF" stroke-opacity="0.03" stroke-width="2"/>
+  </g>
+
+  <!-- 主体：橙色 R -->
+  <g filter="url(#shadow)" stroke="url(#orange)" stroke-width="76"
+     stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M184 132 V400"/>
+    <path d="M184 132 H286 A98 98 0 0 1 286 328 H184"/>
+    <path d="M280 328 C 324 342 360 374 384 406"/>
+  </g>
+
+  <!-- 高光 -->
+  <g stroke="#FFFFFF" stroke-linecap="round" fill="none">
+    <path d="M166 156 V256" stroke-opacity="0.16" stroke-width="10"/>
+    <path d="M208 106 H268" stroke-opacity="0.10" stroke-width="8"/>
+  </g>
+</svg>
